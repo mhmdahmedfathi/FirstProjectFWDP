@@ -27,6 +27,6 @@ References that I have used : https://stackoverflow.com/questions/41361376/detec
 
 ## important_Files
 important files in my project : 
-    \n Html file : it is the core of the project that makes ui that appear to the user
+    # Html file : it is the core of the project that makes ui that appear to the user
     Css file : it is the file used to design the UI to make it better to user
     JS file : it is the most important one as it is the one which makes the file interactive and dynamic
