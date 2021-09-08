@@ -17,9 +17,8 @@
  * Define Global Variables
  * 
 */
-const sections = document.getElementsByTagName("section");
+const sections = document.querySelectorAll("section");
 let IsScrolled = false;
-    
 
 
 
@@ -39,12 +38,12 @@ let IsScrolled = false;
 function nav(){
 
     let Fragments = document.createDocumentFragment();
-    for(let i=0;i<sections.length;i++){
+    sections.forEach(function(section){
         let li = document.createElement("li")
         li.setAttribute("class", "menu__link")
-        li.innerHTML=sections[i].id
+        li.innerHTML=section.id
         Fragments.append(li);
-    }
+    })
     document.getElementById("navbar__list").appendChild(Fragments);
     
 }
@@ -59,26 +58,23 @@ function activeSection(id){
 //helper function
 function checkVisibleSection(){
 
-    let minor   = window.innerHeight,
-        section = null;
+    var Minimum   = window.innerHeight;
+    var Active = null;
 
     //---Select the section closest to the top
-    [].forEach.call(sections, function(item){
+    
+    sections.forEach(function(section){
+        let offset  = section.getBoundingClientRect();
+        if(Math.abs(offset.top) < Minimum){
 
-        let offset  = item.getBoundingClientRect();
-        if(Math.abs(offset.top) < minor){
+            Minimum   = Math.abs(offset.top);
 
-            minor   = Math.abs(offset.top);
+            Active = section;
 
-            section = item;
-
-        }
-
-    });
-
-    //---If the section exists
-    if(section){
-        let id   = section.id;
+        }        
+    })
+    if(Active){
+        let id   = Active.id;
         activeSection(id);
     }
 
