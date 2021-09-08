@@ -17,7 +17,7 @@
  * Define Global Variables
  * 
 */
-let sections = document.getElementsByTagName("section");
+const sections = document.getElementsByTagName("section");
 let IsScrolled = false;
     
 
@@ -38,9 +38,9 @@ let IsScrolled = false;
 // build the nav
 function nav(){
 
-    var Fragments = document.createDocumentFragment();
+    let Fragments = document.createDocumentFragment();
     for(let i=0;i<sections.length;i++){
-        var li = document.createElement("li")
+        let li = document.createElement("li")
         li.setAttribute("class", "menu__link")
         li.innerHTML=sections[i].id
         Fragments.append(li);
@@ -53,14 +53,13 @@ function nav(){
 // Add class 'active' to section when near top of viewport
 function checkVisibleSection(){
 
-    var minor   = window.innerHeight,
+    let minor   = window.innerHeight,
         section = null;
 
     //---Select the section closest to the top
     [].forEach.call(sections, function(item){
 
-        var offset  = item.getBoundingClientRect();
-
+        let offset  = item.getBoundingClientRect();
         if(Math.abs(offset.top) < minor){
 
             minor   = Math.abs(offset.top);
@@ -74,10 +73,10 @@ function checkVisibleSection(){
     //---If the section exists
     if(section){
 
-        var index   = section.id;
-        if(document.getElementById(index) !=null){
+        let id   = section.id;
+        if(document.getElementById(id) !=null){
             document.querySelector(".your-active-class").classList.remove("your-active-class");
-            document.getElementById(index).setAttribute('class',"your-active-class")    
+            document.getElementById(id).setAttribute('class',"your-active-class")    
         }
     }
 
