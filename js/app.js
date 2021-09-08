@@ -48,6 +48,21 @@ function nav(){
     
 }
 
+function SectionsText(){
+        document.querySelectorAll(".landing__container").forEach(function(Container){
+            let Fragments = document.createDocumentFragment();
+            let paragraph1 = document.createElement("p")
+            let paragraph2 = document.createElement("p")
+            paragraph1.innerHTML="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod "
+            Fragments.appendChild(paragraph1)
+            paragraph2.innerHTML = "Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor tortor, eget elementum tortor mollis non."
+            Fragments.appendChild(paragraph2)
+            Container.appendChild(Fragments)
+        
+        })
+    
+}
+
 function activeSection(id){
     if(document.getElementById(id) !=null){
         document.querySelector(".your-active-class").classList.remove("your-active-class");
@@ -58,8 +73,8 @@ function activeSection(id){
 //helper function
 function checkVisibleSection(){
 
-    var Minimum   = window.innerHeight;
-    var Active = null;
+    let Minimum   = window.innerHeight;
+    let Active = null;
 
     //---Select the section closest to the top
     
@@ -113,7 +128,10 @@ function Move(e){
 */
 
 // Build menu && Scroll to section on link click 
-nav();
+(function () {
+    nav();
+    SectionsText();
+})();
 document.getElementById('navbar__list').addEventListener('click',Move)
 
 // Set sections as active
