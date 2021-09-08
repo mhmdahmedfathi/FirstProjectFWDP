@@ -49,8 +49,14 @@ function nav(){
     
 }
 
-
+function activeSection(id){
+    if(document.getElementById(id) !=null){
+        document.querySelector(".your-active-class").classList.remove("your-active-class");
+        document.getElementById(id).setAttribute('class',"your-active-class")    
+    }
+}
 // Add class 'active' to section when near top of viewport
+//helper function
 function checkVisibleSection(){
 
     let minor   = window.innerHeight,
@@ -72,12 +78,8 @@ function checkVisibleSection(){
 
     //---If the section exists
     if(section){
-
         let id   = section.id;
-        if(document.getElementById(id) !=null){
-            document.querySelector(".your-active-class").classList.remove("your-active-class");
-            document.getElementById(id).setAttribute('class',"your-active-class")    
-        }
+        activeSection(id);
     }
 
 }
