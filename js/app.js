@@ -37,14 +37,14 @@ let IsScrolled = false;
 // build the nav
 function nav(){
 
-    let Fragments = document.createDocumentFragment();
+    let EmptyTag = document.createDocumentFragment();
     sections.forEach(function(section){
         let li = document.createElement("li")
-        li.setAttribute("class", "menu__link")
+        li.className= "menu__link"
         li.innerHTML=section.id
-        Fragments.append(li);
+        EmptyTag.append(li);
     })
-    document.getElementById("navbar__list").appendChild(Fragments);
+    document.getElementById("navbar__list").appendChild(EmptyTag);
     
 }
 
@@ -64,10 +64,8 @@ function SectionsText(){
 }
 
 function activeSection(id){
-    if(document.getElementById(id) !=null){
         document.querySelector(".your-active-class").classList.remove("your-active-class");
         document.getElementById(id).setAttribute('class',"your-active-class")    
-    }
 }
 // Add class 'active' to section when near top of viewport
 //helper function
@@ -77,18 +75,17 @@ function checkVisibleSection(){
     let Active = null;
 
     //---Select the section closest to the top
-    
-    sections.forEach(function(section){
-        let offset  = section.getBoundingClientRect();
-        if(Math.abs(offset.top) < Minimum){
+    for(section of sections){
+        let Top_Section  = section.getBoundingClientRect();
+        if(Math.abs(Top_Section.top) < Minimum){
 
-            Minimum   = Math.abs(offset.top);
+            Minimum   = Math.abs(Top_Section.top);
 
             Active = section;
 
         }        
-    })
-    if(Active){
+    }
+    if(Active != null){
         let id   = Active.id;
         activeSection(id);
     }
