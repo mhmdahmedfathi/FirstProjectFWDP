@@ -38,12 +38,12 @@ let IsScrolled = false;
 function nav(){
 
     let EmptyTag = document.createDocumentFragment();
-    sections.forEach(function(section){
+    for(section of sections){
         let li = document.createElement("li")
         li.className= "menu__link"
         li.innerHTML=section.id
         EmptyTag.append(li);
-    })
+    }
     document.getElementById("navbar__list").appendChild(EmptyTag);
     
 }
